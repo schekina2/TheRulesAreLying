@@ -1,9 +1,11 @@
 [gd_scene format=3 uid="uid://c14abu4y7kadd"]
 
 [ext_resource type="PackedScene" uid="uid://cj0q6gcikid2n" path="res://player.tscn" id="1_3hls8"]
+[ext_resource type="Script" uid="uid://dadlgbbpit8q5" path="res://scripts/door.gd" id="2_hbghi"]
+[ext_resource type="Script" path="res://scripts/level_1.gd" id="3_level1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3hls8"]
-size = Vector2(1074, 33)
+size = Vector2(1080, 33)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bflk"]
 size = Vector2(1111, 36)
@@ -14,9 +16,14 @@ size = Vector2(42, 997)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mvibv"]
 size = Vector2(44, 989)
 
-[node name="Level1" type="Node2D" unique_id=1445254334]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_door"]
+size = Vector2(64, 239)
+
+[node name="Level1" type="Node2D" unique_id=1445254334 script=ExtResource("3_level1")]
 
 [node name="Player" parent="." unique_id=1471323021 instance=ExtResource("1_3hls8")]
+z_index = 10
+position = Vector2(400, 300)
 
 [node name="Polygon2D" type="Polygon2D" parent="." unique_id=1335229724]
 polygon = PackedVector2Array(-500, -431, 598, -427, 610, 554, -512, 552)
@@ -41,9 +48,34 @@ shape = SubResource("RectangleShape2D_mvibv")
 
 [node name="Door" type="Area2D" parent="." unique_id=24514492]
 position = Vector2(663, 46)
+script = ExtResource("2_hbghi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Door" unique_id=1350447080]
+shape = SubResource("RectangleShape2D_door")
 
 [node name="Polygon2D" type="Polygon2D" parent="Door" unique_id=722733718]
 color = Color(0.33333334, 1, 1, 1)
 polygon = PackedVector2Array(-30, 79, -36, -163, 34, -160, 34, 77)
+
+[node name="RealDoor" type="Area2D" parent="." unique_id=24514493]
+position = Vector2(-554, 46)
+script = ExtResource("2_hbghi")
+is_true_exit = true
+next_level_path = ""
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RealDoor" unique_id=1350447081]
+shape = SubResource("RectangleShape2D_door")
+
+[node name="Polygon2D" type="Polygon2D" parent="RealDoor" unique_id=722733719]
+color = Color(1, 0.6, 0.2, 1)
+polygon = PackedVector2Array(-30, 79, -36, -163, 34, -160, 34, 77)
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="RuleLabel" type="Label" parent="UI"]
+offset_left = 20.0
+offset_top = 16.0
+offset_right = 900.0
+offset_bottom = 60.0
+theme_override_font_sizes/font_size = 28
+text = "RÈGLE : Cette porte est la sortie."
