@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://t5edtq5kblxh"]
+
+[ext_resource type="Script" uid="uid://db2nlvcgaimof" path="res://scripts/hud.gd" id="1_37p78"]
+
+[node name="HUD" type="CanvasLayer" unique_id=604980103]
+script = ExtResource("1_37p78")
+
+[node name="HUDLayout" type="VBoxContainer" parent="." unique_id=343920331]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 50.0
+grow_horizontal = 0
+
+[node name="ScoreLabel" type="Label" parent="HUDLayout" unique_id=131680027]
+layout_mode = 2
+
+[node name="TimeLabel" type="Label" parent="HUDLayout" unique_id=1882890223]
+layout_mode = 2

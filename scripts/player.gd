@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @export var speed = 200
+var locked: bool = false
 
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 
@@ -8,25 +9,25 @@ func _ready():
 	add_to_group("player")
 
 func _physics_process(_delta):
+	if locked:
+		velocity = Vector2.ZERO
+		move_and_slide()
+		_update_animation(Vector2.ZERO)
+		return
 
 	var direction = Vector2.ZERO
 
 	if Input.is_action_pressed("ui_right"):
 		direction.x += 1
-
 	if Input.is_action_pressed("ui_left"):
 		direction.x -= 1
-
 	if Input.is_action_pressed("ui_down"):
 		direction.y += 1
-
 	if Input.is_action_pressed("ui_up"):
 		direction.y -= 1
 
 	velocity = direction.normalized() * speed
-
 	move_and_slide()
-
 	_update_animation(direction)
 
 func _update_animation(direction: Vector2) -> void:
