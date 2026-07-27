@@ -18,6 +18,6 @@ func _on_body_entered(body: Node2D) -> void:
 	if is_true_exit:
 		true_exit_reached.emit()
 		if next_level_path != "":
-			get_tree().change_scene_to_file(next_level_path)
+			get_tree().call_deferred("change_scene_to_file", next_level_path)
 	else:
 		lie_discovered.emit()
