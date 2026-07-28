@@ -19,10 +19,10 @@ func _on_score_changed(new_score: int) -> void:
 func _on_time_changed(new_time: float) -> void:
 	var m := int(new_time / 60.0)
 	var s := int(new_time) % 60
-	time_label.text = "Temps : %02d:%02d" % [m, s]
+	time_label.text = "Time: %02d:%02d" % [m, s]
 
 func _on_game_over() -> void:
-	game_over_label.text = "GAME OVER\nScore final : %d\n\nAppuie sur R pour recommencer\nou sur M pour le menu" % GameManager.score
+	game_over_label.text = "GAME OVER\nFinal score: %d\n\nPress R to restart\nor M for the menu" % GameManager.score
 	game_over_label.visible = true
 
 func _unhandled_input(event: InputEvent) -> void:

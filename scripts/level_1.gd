@@ -9,7 +9,7 @@ var start_position: Vector2
 
 func _ready() -> void:
 	start_position = player.global_position
-	rule_label.text = "Je suis de la couleur du ciel. Mais ne te fie pas à moi pour trouver la sortie."
+	rule_label.text = "I am the color of the sky. But don't trust me to find the exit."
 	GameManager.timer_active = true
 
 	fake_door.lie_discovered.connect(_on_lie_discovered)
@@ -18,8 +18,8 @@ func _ready() -> void:
 	Transition.fade_in()
 
 func _on_lie_discovered() -> void:
-	rule_label.text = "MENSONGE. -100 points, -10s. Réessaie."
+	rule_label.text = "LIE. -100 points, -10s. Try again."
 	player.global_position = start_position
 
 func _on_true_exit_reached() -> void:
-	rule_label.text = "Tu as trouvé la vraie sortie. +50 points."
+	rule_label.text = "You found the real exit. +50 points."

@@ -83,5 +83,5 @@ offset_right = -277.0
 offset_bottom = -620.0
 theme_override_colors/font_color = Color(0.45490196, 0.20392157, 0.39607844, 1)
 theme_override_font_sizes/font_size = 28
-text = "ENIGME: Je suis de la couleur du ciel. Mais ne te fie pas à moi pour trouver la sortie."
+text = "ENIGME: I am the color of the sky. But don't trust me to find the exit."
 autowrap_mode = 2

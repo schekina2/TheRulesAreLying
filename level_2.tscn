@@ -83,5 +83,6 @@ offset_right = 1073.0
 offset_bottom = 403.0
 theme_override_colors/font_color = Color(0.45490196, 0.20392157, 0.39607844, 1)
 theme_override_font_sizes/font_size = 28
-text = "ENIGME : La zone rouge brûle à l'œil. 
-Le calme n'a jamais été un gage de sécurité."
+text = "ENIGME : The red zone burns the eye. 
+Calm was 
+never a guarantee of safety."
