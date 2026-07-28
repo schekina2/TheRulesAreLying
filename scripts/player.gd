@@ -4,9 +4,11 @@ extends CharacterBody2D
 var locked: bool = false
 
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
+@onready var camera: Camera2D = $Camera2D
 
 func _ready():
 	add_to_group("player")
+	GameManager.penalty_applied.connect(_on_penalty_applied)
 
 func _physics_process(_delta):
 	if locked:
@@ -37,3 +39,14 @@ func _update_animation(direction: Vector2) -> void:
 			anim.flip_h = direction.x < 0
 	else:
 		anim.play("idle")
+
+func _on_penalty_applied() -> void:
+	_shake_camera()
+
+func _shake_camera() -> void:
+	var tween := create_tween()
+	var strength := 8.0
+	for i in 6:
+		var offset := Vector2(randf_range(-strength, strength), randf_range(-strength, strength))
+		tween.tween_property(camera, "offset", offset, 0.03)
+	tween.tween_property(camera, "offset", Vector2.ZERO, 0.03)

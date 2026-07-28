@@ -18,6 +18,8 @@ config/icon="res://icon.svg"
 [autoload]
 
 GameManager="*uid://bw2wea6ke5gxc"
+SFX="*res://scripts/sfx.gd"
+Transition="*res://scripts/transition.gd"
 Hud="*uid://t5edtq5kblxh"
 
 [display]
